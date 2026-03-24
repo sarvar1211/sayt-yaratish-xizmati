@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sayt Yaratib Berish | EMERALD <img src="https://www.ovhcloud.com/sites/default/files/styles/large_screens_1x/public/2021-10/ECX_1617_Domain_Hero.png" alt=""></title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" defer></script>
+
+<style>
+:root{
+  --bg:#04100e;
+  --accent:#d4af37;
+  --text:#f0f4f3;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Plus Jakarta Sans';background:var(--bg);color:var(--text);overflow-x:hidden;position:relative;cursor:none;}
+body::before{content:"";position:fixed;top:0;left:0;width:100%;height:100%;background:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2000') center/cover no-repeat;opacity:0.25;z-index:-3;background-size:cover;}
+#particleCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;}
+#cursor{position:fixed;top:0;left:0;width:35px;height:35px;border-radius:50%;background:var(--accent);pointer-events:none;transform:translate(-50%, -50%);transition:all .1s ease;z-index:9999;}
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:center;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);z-index:1000}
+.nav{width:1200px;display:flex;justify-content:space-between;padding:20px}
+.logo{color:var(--accent);font-weight:800;font-size:1.8rem}
+
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;position:relative;overflow:hidden}
+h1{font-family:'Space Grotesk';font-size:clamp(3rem,8vw,6rem);background:linear-gradient(#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation: gradientAnim 6s infinite linear;line-height:1.2;}
+@keyframes gradientAnim{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hero p{margin-top:20px;font-size:1.5rem;opacity:0.85;max-width:900px;line-height:1.8}
+.btn{margin-top:40px;padding:20px 50px;background:var(--accent);color:#000;border-radius:100px;text-decoration:none;font-weight:800;font-size:1.2rem;transition:.3s}
+.btn:hover{transform:scale(1.1) rotate(-1deg)}
+
+section{padding:80px 10%;position:relative;overflow:hidden}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px}
+.feature{background:rgba(0,0,0,0.65);padding:30px;border-radius:25px;text-align:center;font-weight:700;transition:.3s;z-index:1;position:relative}
+.feature span{position:relative;z-index:1;font-size:1.2rem}
+
+.stats{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.stat{flex:1 1 200px;background:rgba(0,0,0,0.55);padding:20px;border-radius:25px;text-align:center;position:relative;z-index:1}
+.progress-bar{height:16px;background:var(--accent);border-radius:12px;transition:.5s;width:0%}
+.stat span{font-weight:700;font-size:1.1rem}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
+.gallery img{width:100%;height:250px;object-fit:cover;border-radius:20px;transition:.4s;z-index:1;position:relative}
+.gallery img:hover{transform:scale(1.05);filter:brightness(1.2)}
+
+.fade{opacity:0;transform:translateY(50px);transition:.8s}
+.fade.show{opacity:1;transform:translateY(0)}
+
+footer{padding:60px;text-align:center;opacity:.9}
+@media(max-width:600px){h1{font-size:2.5rem}}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+<canvas id="particleCanvas"></canvas>
+<div id="cursor"></div>
+
+<nav><div class="nav"><div class="logo">EMERALD</div><div>ACTIVE</div></div></nav>
+
+<section class="hero fade">
+<h1>Sayt Yaratib Berish Xizmati</h1>
+<p>Biz sizga biznesingiz, do‘koningiz yoki shaxsiy loyihangiz uchun professional sayt yaratib beramiz. Tez, zamonaviy va responsive!</p>
+<a href="https://t.me/raxmatullayev_sarvar" class="btn" target="_blank">Buyurtma berish</a>
+</section>
+
+<section class="features fade">
+<div class="feature"><span>📱 Responsive va mobilga mos</span></div>
+<div class="feature"><span>⚡ Tez ishlash va optimizatsiya</span></div>
+<div class="feature"><span>🎨 Dizayn va brending</span></div>
+<div class="feature"><span>🔒 Xavfsizlik va server himoyasi</span></div>
+<div class="feature"><span>☁️ Cloud hosting imkoniyati</span></div>
+<div class="feature"><span>🛒 Onlayn shop integratsiyasi</span></div>
+<div class="feature"><span>📊 Analitika va monitoring</span></div>
+<div class="feature"><span>💬 Mijoz qo‘llab-quvvatlash</span></div>
+</section>
+
+<section class="stats fade">
+<div class="stat"><span>100+ Loyihalar</span><div class="progress-bar" style="width:90%"></div></div>
+<div class="stat"><span>50+ Faol mijozlar</span><div class="progress-bar" style="width:85%"></div></div>
+<div class="stat"><span>24/7 Qo‘llab-quvvatlash</span><div class="progress-bar" style="width:95%"></div></div>
+<div class="stat"><span>Global xizmat</span><div class="progress-bar" style="width:80%"></div></div>
+</section>
+
+<section class="gallery fade">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmyPKt9zCPmnKXKsB3SqqSIUiTkmAt0ctTYg&s" alt="Website design">
+<img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?q=80&w=1200" alt="Responsive design">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200" alt="Web development">
+<img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1200" alt="Modern UI">
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200" alt="Business website">
+</section>
+
+<footer>
+<p>© BIZ BILAN BIRGA BO'LING!</p>
+<p></p>
+</footer>
+
+<script defer>
+document.addEventListener('DOMContentLoaded',()=>{
+
+// Cursor
+const cursor=document.getElementById('cursor');
+document.addEventListener('mousemove',e=>{cursor.style.transform=`translate(${e.clientX}px,${e.clientY}px)`});
+document.addEventListener('mousedown',()=>{cursor.style.width='50px';cursor.style.height='50px';cursor.style.background='#fff';});
+document.addEventListener('mouseup',()=>{cursor.style.width='35px';cursor.style.height='35px';cursor.style.background='var(--accent)';});
+
+// Fade in scroll
+const els=document.querySelectorAll('.fade');
+const fadeIn=()=>{els.forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight-80) el.classList.add('show');});};
+window.addEventListener('scroll',fadeIn);
+fadeIn();
+
+// Three.js full page 3D effect
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
+const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('bg'),alpha:true,antialias:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
+
+// Create multiple neon shapes
+const shapes=[];
+for(let i=0;i<80;i++){
+  const geo=new THREE.TorusGeometry(Math.random()*0.5+0.2,0.1,16,100);
+  const mat=new THREE.MeshBasicMaterial({color:new THREE.Color(`hsl(${Math.random()*360},100%,50%)`),wireframe:true});
+  const mesh=new THREE.Mesh(geo,mat);
+  mesh.position.set((Math.random()-0.5)*20,(Math.random()-0.5)*20,(Math.random()-0.5)*20);
+  shapes.push(mesh);
+  scene.add(mesh);
+}
+camera.position.z=10;
+
+function animate(){
+  shapes.forEach(s=>{s.rotation.x+=0.01; s.rotation.y+=0.01;});
+  renderer.render(scene,camera);
+  requestAnimationFrame(animate);
+}
+animate();
+
+// Particles
+const pCanvas=document.getElementById('particleCanvas');
+const pCtx=pCanvas.getContext('2d');
+const resizeParticles=()=>{pCanvas.width=window.innerWidth; pCanvas.height=window.innerHeight;};
+window.addEventListener('resize',resizeParticles);
+resizeParticles();
+let particles=[];
+for(let i=0;i<500;i++){particles.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*3+1,d:Math.random()*2});}
+function drawParticles(){
+  pCtx.clearRect(0,0,pCanvas.width,pCanvas.height);
+  particles.forEach(p=>{
+    pCtx.beginPath();
+    pCtx.arc(p.x,p.y,p.r,0,Math.PI*2,false);
+    pCtx.fillStyle='rgba(212,175,55,0.6)';
+    pCtx.fill();
+    p.x+=Math.sin(p.d); p.y+=Math.cos(p.d);
+    if(p.x>innerWidth)p.x=0;if(p.x<0)p.x=innerWidth;
+    if(p.y>innerHeight)p.y=0;if(p.y<0)p.y=innerHeight;
+  });
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+});
+</script>
+
+
+</body>
+</html>
